@@ -41,7 +41,7 @@ const Main = () => {
         </div>
       </section>
       <section className="w-full md:w-[25%] dark:bg-slate-900/30 border-l">
-        <div className="w-auto m-4 dark:bg-slate-900/90 bg-white p-4 rounded-md flex flex-col gap-2.5">
+        <div className="hidden md:flex w-auto m-4 dark:bg-slate-900/90 bg-white p-4 rounded-md flex-col gap-2.5">
           <div className="dark:text-slate-400 font-semibold text-md md:text-lg flex justify-between items-center">
             <div>Ilham Rifai</div>
             <div className="hidden md:flex">
@@ -64,7 +64,7 @@ const Main = () => {
         </div>
         <div className="w-auto p-4 rounded-md flex flex-col gap-4">
           <div className="text-slate-900 dark:text-slate-400 font-semibold text-sm md:text-lg">
-            Logs
+            Activity Logs
           </div>
           <Logs
             tanggal={"24 Maret 2024, At 14.00 "}
