@@ -25,7 +25,7 @@ const Sidebar = () => {
               <div>
                 <AiOutlineDashboard />
               </div>
-              <div className="hidden sm:flex hover:text-slate-400/80 cursor-pointer">
+              <div className="hidden sm:flex dark:hover:text-slate-400/80 cursor-pointer">
                 Dashboard
               </div>
             </div>
@@ -33,7 +33,7 @@ const Sidebar = () => {
               <div>
                 <FiBox />
               </div>
-              <div className="hidden sm:flex hover:text-slate-400/80 cursor-pointer">
+              <div className="hidden sm:flex dark:hover:text-slate-400/80 cursor-pointer">
                 Item List
               </div>
             </div>
@@ -41,7 +41,7 @@ const Sidebar = () => {
               <div>
                 <MdOutlineVerticalAlignCenter />
               </div>
-              <div className="hidden sm:flex hover:text-slate-400/80 cursor-pointer">
+              <div className="hidden sm:flex dark:hover:text-slate-400/80 cursor-pointer">
                 Transaction List
               </div>
             </div>
@@ -49,13 +49,13 @@ const Sidebar = () => {
               <div>
                 <GiBrokenBone />
               </div>
-              <div className="hidden sm:flex hover:text-slate-400/80 cursor-pointer">
+              <div className="hidden sm:flex dark:hover:text-slate-400/80 cursor-pointer">
                 Broke Unit
               </div>
             </div>
           </div>
         </div>
-        <div className="flex items-center dark:text-slate-400 hover:text-slate-400/80 cursor-pointer text-md sm:text-sm md:text-[16px] font-semibold px-4 mb-4 gap-3">
+        <div className="flex items-center dark:text-slate-400 dark:hover:text-slate-400/80 cursor-pointer text-md sm:text-sm md:text-[16px] font-semibold px-4 mb-4 gap-3">
           <div>
             <IoSettingsOutline />
           </div>
