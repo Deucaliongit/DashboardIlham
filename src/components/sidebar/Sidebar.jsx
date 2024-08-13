@@ -55,11 +55,19 @@ const Sidebar = () => {
             </div>
           </div>
         </div>
-        <div className="flex items-center dark:text-slate-400 dark:hover:text-slate-400/80 cursor-pointer text-md sm:text-sm md:text-[16px] font-semibold px-4 mb-4 gap-3">
-          <div>
-            <IoSettingsOutline />
+        <div>
+          <div className="flex items-center dark:text-slate-400 dark:hover:text-slate-400/80 cursor-pointer text-md sm:text-sm md:text-[16px] font-semibold px-4 mb-4 gap-3">
+            <div>
+              <IoSettingsOutline />
+            </div>
+            <div className="hidden sm:flex">Settings</div>
           </div>
-          <div className="hidden sm:flex">Settings</div>
+          <div className="flex items-center dark:text-slate-400 dark:hover:text-slate-400/80 cursor-pointer text-md sm:text-sm md:text-[16px] font-semibold px-4 mb-4 gap-3">
+            <div>
+              <IoSettingsOutline />
+            </div>
+            <div className="hidden sm:flex">Logout</div>
+          </div>
         </div>
       </div>
     </div>

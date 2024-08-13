@@ -1,16 +1,32 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { CiCalendar } from "react-icons/ci";
 import { IoIosNotificationsOutline } from "react-icons/io";
 import { MdOutlineMarkEmailUnread } from "react-icons/md";
 import profile from "../../assets/img/profile.jpg";
 import Card from "../miniComponents/Card";
+import TableItem from "../miniComponents/TableItem";
 import { PiComputerTowerBold, PiBuildingOffice } from "react-icons/pi";
 import { MdComputer } from "react-icons/md";
 import { IoMdClose } from "react-icons/io";
 import { FaComputer } from "react-icons/fa6";
 import Logs from "../miniComponents/Logs";
+import axios from "axios";
 
 const Main = () => {
+  const [log, setLog] = useState([]);
+
+  useEffect(() => {
+    const dataLog = async () => {
+      try {
+        const apiUrl = "http://10.17.44.43:3000/log-user";
+        const dataLog = await axios.get(apiUrl);
+        setLog(dataLog.data.data);
+      } catch (error) {}
+    };
+
+    dataLog();
+  }, []);
+
   return (
     <div className="flex flex-col md:flex-row bg-slate-100 dark:bg-slate-950 ">
       <section className="w-auto md:w-[75%] h-full">
@@ -39,8 +55,9 @@ const Main = () => {
           <Card icon={<FaComputer />} ket={"Total Asset Bekas"} jumlah={"5"} />
           <Card icon={<IoMdClose />} ket={"Total Asset Rusak"} jumlah={"15"} />
         </div>
+        <TableItem />
       </section>
-      <section className="w-full md:w-[25%] dark:bg-slate-900/30 border-l">
+      <section className="md:w-[25%] dark:bg-slate-900/30 border-none md:border-l mx-4 md:mx-0 rounded-md md:rounded-none py-2">
         <div className="hidden md:flex w-auto m-4 dark:bg-slate-900/90 bg-white p-4 rounded-md flex-col gap-2.5">
           <div className="dark:text-slate-400 font-semibold text-md md:text-lg flex justify-between items-center">
             <div>Ilham Rifai</div>
@@ -52,12 +69,12 @@ const Main = () => {
             Administrator
           </div>
           <div className="text-indigo-900 font-bold text-sm md:text-md dark:text-transparent dark:bg-gradient-to-tl from-indigo-800 to-pink-800 py-2 rounded-md cursor-pointer bg-indigo-800 ">
-            <div className="dark:text-slate-400 text-white text-center">
+            <div className="dark:text-slate-300 text-white text-center">
               Profile
             </div>
           </div>
           <div className="text-indigo-900 font-bold text-sm md:text-md dark:text-transparent dark:bg-gradient-to-tl from-indigo-800 to-pink-800 py-2 rounded-md cursor-pointer bg-slate-600 ">
-            <div className="dark:text-slate-400 text-white text-center">
+            <div className="dark:text-slate-300 text-white text-center">
               Logout
             </div>
           </div>
@@ -66,22 +83,23 @@ const Main = () => {
           <div className="text-slate-900 dark:text-slate-400 font-semibold text-sm md:text-lg">
             Activity Logs
           </div>
-          <Logs
-            tanggal={"24 Maret 2024, At 14.00 "}
-            action={"Anda Sudah Login"}
-          />
-          <Logs
-            tanggal={"23 Maret 2024, At 11.00 "}
-            action={"Afrian , Create Item"}
-          />
-          <Logs
-            tanggal={"23 Maret 2024, At 10.00 "}
-            action={"Afrian , Delete Crash Item"}
-          />
-          <Logs
-            tanggal={"22 Maret 2024, At 08.00 "}
-            action={"Yusuf, Create Assets"}
-          />
+          {log.length === 0 ? (
+            <div>
+              <Logs
+                key={"Data not found"}
+                tanggal={"Data not found"}
+                action={"Data not found"}
+              />
+            </div> // Display if no data is available
+          ) : (
+            log.map((logAction, index) => (
+              <Logs
+                key={logAction.id}
+                tanggal={logAction.createdAt}
+                action={logAction.log}
+              />
+            ))
+          )}
         </div>
       </section>
     </div>
